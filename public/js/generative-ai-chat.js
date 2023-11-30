@@ -67,10 +67,10 @@ function vr_function(){
         var text = results[i][0].transcript;
         $('#result_text').val( '' );
         $('#result_texts').html( '<div class="balloon-l">' + text + '</div>' );
-        $('#result_text').css( 'display', 'none' );
+        ///$('#result_text').css( 'display', 'none' );
         AiChat( text );
       }else{
-        $('#result_text').css( 'display', 'block' );
+        ///$('#result_text').css( 'display', 'block' );
         $('#result_text').val( "[Listening] " + results[i][0].transcript );
         flag_speech = 1;
       }
@@ -82,7 +82,7 @@ function vr_function(){
 }
 
 function AiChat( text ){
-  $('#result_text').css( 'display', 'none' );
+  ///$('#result_text').css( 'display', 'none' );
   var obj = getBusyOverlay( 'viewport', { color:'black', opacity:0.5, text:'thinking..', style:'text-decoration:blink;font-weight:bold;font-size:12px;color:white' } );
   $.ajax({
     type: 'POST',
@@ -107,7 +107,7 @@ function AiChat( text ){
       }
     },
     error: function( e0, e1, e2 ){
-      $('#result_text').css( 'display', 'block' );
+      ///$('#result_text').css( 'display', 'block' );
       obj.remove();
       obj = null;
       console.log( e0, e1, e2 );
@@ -116,12 +116,13 @@ function AiChat( text ){
       $('#start_btn').addClass( 'btn-primary' );
       $('#start_btn').val( '<i class="fas fa-comment-alt"></i>' );
 
-      $('#result_text').css( 'display', 'block' );
+      ///$('#result_text').css( 'display', 'block' );
     }
   })
 }
 
 $(function(){
+  /*
   $('#result_text').mouseup( function( e ){
     if( e.which == 3 ){   //. テキストエリア上で右クリック
       flag_editable = !flag_editable;
@@ -139,6 +140,7 @@ $(function(){
       }
     }
   });
+  */
 });
 
 var uttr = null;
@@ -176,5 +178,5 @@ function speechEnd( evt ){
   $('#start_btn').addClass( 'btn-primary' );
   $('#start_btn').val( '<i class="fas fa-comment-alt"></i>' );
 
-  $('#result_text').css( 'display', 'block' );
+  ///$('#result_text').css( 'display', 'block' );
 }
